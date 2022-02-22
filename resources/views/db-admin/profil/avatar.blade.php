@@ -22,7 +22,7 @@
                                 <form action="{{ route('db-admin.updateavatar') }}" method="POST" enctype="multipart/form-data" class="form form-horizontal space-y-3">
                                     @csrf
                                     @method('PUT')
-                                    <input name="image" class="@error('image') border-primary @enderror input-box" type="file">
+                                    <input name="image" class="@error('image') border-primary @enderror input-box focus:border focus:border-blue-700" type="file">
                                     <input type="hidden" name="oldimage" value="{{ $user->image }}">
                                     @error('image')
                                         <strong class="block mt-1 text-xs text-primary">{{ $message }}</strong>

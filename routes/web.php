@@ -36,6 +36,7 @@ Route::group(['middleware' => ['auth','admin']], function() {
     Route::get('/db-admin/changedetail', [App\Http\Controllers\UserController::class, 'changedetail'])->name('db-admin.changedetail');
     Route::put('/db-admin/updatedetail', [App\Http\Controllers\UserController::class, 'updatedetail'])->name('db-admin.updatedetail');
     Route::get('/db-admin/changepassword', [App\Http\Controllers\DashboardAdminController::class, 'changepassword'])->name('db-admin.changepassword');
+    Route::put('/db-admin/updatepassword', [App\Http\Controllers\UserController::class, 'updatepassword'])->name('db-admin.updatepassword');
     
     // dashboard - products
     Route::get('/db-admin/category', [App\Http\Controllers\CategoryController::class, 'index'])->name('db-admin.category');
@@ -79,6 +80,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/changedetail', [App\Http\Controllers\DashboardController::class, 'changedetail'])->name('dashboard.changedetail');
     Route::put('/updatedetail', [App\Http\Controllers\UserController::class, 'updatedetail'])->name('dashboard.updatedetail');
     Route::get('/changepassword', [App\Http\Controllers\DashboardController::class, 'changepassword'])->name('dashboard.changepassword');
+    Route::put('/updatepassword', [App\Http\Controllers\UserController::class, 'updatepassword'])->name('dashboard.updatepassword');
     Route::get('/unpaid', [App\Http\Controllers\DashboardController::class, 'unpaid'])->name('dashboard.unpaid');
     Route::get('/delivery', [App\Http\Controllers\DashboardController::class, 'delivery'])->name('dashboard.delivery');
     Route::get('/history', [App\Http\Controllers\DashboardController::class, 'history'])->name('dashboard.history');

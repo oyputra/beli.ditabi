@@ -13,7 +13,6 @@
                         <div class="card-body">
                             <form action="{{ route('db-admin.updatedetail') }}" method="POST" class="form form-horizontal">
                                 @csrf
-                                @method('PUT')
                                 <div class="form-body">
                                     <div class="space-y-3">
                                         <div class="flex items-center space-x-4">
@@ -23,7 +22,7 @@
                                                 </svg>
                                             </div>
                                             <div class="col-md-10">
-                                                <input type="text" class="@error('name') border-primary @enderror input-box" name="name" value="{{ $user->name }}">
+                                                <input type="text" class="@error('name') border-primary @enderror input-box focus:border focus:border-blue-700" name="name" value="{{ $user->name }}">
                                                 @error('name')
                                                     <strong class="block mt-1 text-xs text-primary">{{ $message }}</strong>
                                                 @enderror
@@ -36,7 +35,7 @@
                                                 </svg>
                                             </div>
                                             <div class="col-md-10">
-                                                <input type="text" class="@error('email') border-primary @enderror input-box" name="email" value="{{ $user->email }}">
+                                                <input type="text" class="@error('email') border-primary @enderror input-box focus:border focus:border-blue-700" name="email" value="{{ $user->email }}">
                                                 @error('email')
                                                     <strong class="block mt-1 text-xs text-primary">{{ $message }}</strong>
                                                 @enderror
@@ -50,7 +49,7 @@
                                                 </svg>
                                             </div>
                                             <div class="col-md-10">
-                                                <input type="text" class="@error('is_admin') border-primary @enderror input-box" name="is_admin" value="{{ $user->is_admin }}">
+                                                <input type="text" class="@error('is_admin') border-primary @enderror input-box focus:border focus:border-blue-700" name="is_admin" value="{{ $user->is_admin }}">
                                                 <p class="text-sm">*Role 1 is Admin & role 0 is Customer</p>
                                                 @error('is_admin')
                                                     <strong class="block mt-1 text-xs text-primary">{{ $message }}</strong>

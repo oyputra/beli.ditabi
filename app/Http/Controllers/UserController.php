@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use App\Models\User;
 use App\Http\Requests\DetailUpdateRequest;
+use Illuminate\Support\Facades\Hash;
 
 
 class UserController extends Controller
@@ -77,5 +78,29 @@ class UserController extends Controller
         } else {
             return redirect()->route('dashboard.detail')->with('status','User detail updated successfully!');
         }
+    }
+
+    public function updatepassword(Request $request)
+    {
+        $user = User::find(Auth::user()->id);
+        
+        $request->validate([
+            'old_password' => 'required',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+        
+        if( !(Hash::check($request->old_password, $user->password)) ) {
+            return back()->with('status', 'Password lama kamu tidak sesuai!');
+        }
+        
+        if(strcmp($request->get('old_password'), $request->get('password')) == 0){
+            return back()->with('status', 'Password lama kamu tidak boleh sama dengan password baru!');
+        } 
+
+        $user->password = bcrypt($request->get('password'));
+
+        $user->save();
+        
+        return redirect()->back()->with('status', 'Password kamu berhasil diubah');
     }
 }
